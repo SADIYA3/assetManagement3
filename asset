@@ -1,0 +1,27 @@
+package com.example.assetmanagement3.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+public class Asset {
+    public enum Status { AVAILABLE, ASSIGNED, RECOVERED }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+    private LocalDate purchaseDate;
+    private String conditionNotes;
+
+    @Enumerated(EnumType.STRING)
+    private Status assignmentStatus = Status.AVAILABLE;
+
+    @ManyToOne
+    private Category category;
+
+    @ManyToOne
+    private Employee assignedTo;
+
+    // Getters and setters
+}
