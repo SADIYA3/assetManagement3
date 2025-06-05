@@ -20,3 +20,5 @@ jdbc:h2:mem:testdb
 Username: sa
 Password: (leave blank)
 Developed for internship assignment at RMgX Technologies.
+
+I have also uploaded the ouput image of assignment execution,you can view from assetmanagement3output.pdf file
