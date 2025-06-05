@@ -1,0 +1,155 @@
+{
+  "info": {
+    "name": "Asset Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Asset",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"MacBook Air\", \"purchaseDate\": \"2024-05-01\", \"conditionNotes\": \"Brand new\", \"category\": \"Electronics\", \"assignmentStatus\": \"UNASSIGNED\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/assets",
+          "host": [
+            "localhost:8080"
+          ],
+          "path": [
+            "api",
+            "assets"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Assets",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/assets",
+          "host": [
+            "localhost:8080"
+          ],
+          "path": [
+            "api",
+            "assets"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search Assets",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/assets/search?name=macbook",
+          "host": [
+            "localhost:8080"
+          ],
+          "path": [
+            "api",
+            "assets",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "macbook"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Asset",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"MacBook Air M2\", \"purchaseDate\": \"2024-05-01\", \"conditionNotes\": \"Excellent\", \"category\": \"Electronics\", \"assignmentStatus\": \"UNASSIGNED\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/assets/1",
+          "host": [
+            "localhost:8080"
+          ],
+          "path": [
+            "api",
+            "assets",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Asset",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/assets/1",
+          "host": [
+            "localhost:8080"
+          ],
+          "path": [
+            "api",
+            "assets",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Assign Asset",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/api/assets/assign/1/to/1",
+          "host": [
+            "localhost:8080"
+          ],
+          "path": [
+            "api",
+            "assets",
+            "assign",
+            "1",
+            "to",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Recover Asset",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/api/assets/recover/1",
+          "host": [
+            "localhost:8080"
+          ],
+          "path": [
+            "api",
+            "assets",
+            "recover",
+            "1"
+          ]
+        }
+      }
+    }
+  ]
+}
