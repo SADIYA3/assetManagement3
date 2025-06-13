@@ -1,0 +1,46 @@
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Component
+public class DataLoader implements CommandLineRunner {
+
+    private final CategoryRepository categoryRepository;
+    private final AssetRepository assetRepository;
+    private final EmployeeRepository employeeRepository;
+
+    public DataLoader(CategoryRepository categoryRepository,
+                      AssetRepository assetRepository,
+                      EmployeeRepository employeeRepository) {
+        this.categoryRepository = categoryRepository;
+        this.assetRepository = assetRepository;
+        this.employeeRepository = employeeRepository;
+    }
+
+    @Override
+    public void run(String... args) {
+        if (categoryRepository.count() == 0) {
+            // Add Categories
+            Category electronics = new Category("Electronics", "Electronic items like laptops, monitors");
+            Category furniture = new Category("Furniture", "Office furniture like desks and chairs");
+            categoryRepository.saveAll(List.of(electronics, furniture));
+
+            // Add Employees
+            Employee emp1 = new Employee("John Doe", "Software Engineer");
+            Employee emp2 = new Employee("Alice Smith", "HR Manager");
+            Employee emp3 = new Employee("Bob Johnson", "Product Manager");
+            employeeRepository.saveAll(List.of(emp1, emp2, emp3));
+
+            // Add Assets
+            Asset laptop = new Asset("Dell Laptop", LocalDate.of(2023, 1, 15), "New condition", electronics, "Available");
+            Asset monitor = new Asset("HP Monitor", LocalDate.of(2022, 11, 10), "Slight scratches", electronics, "Available");
+            Asset chair = new Asset("Office Chair", LocalDate.of(2021, 6, 5), "Good condition", furniture, "Available");
+            Asset desk = new Asset("Wooden Desk", LocalDate.of(2020, 3, 20), "Old but usable", furniture, "Available");
+            assetRepository.saveAll(List.of(laptop, monitor, chair, desk));
+
+            System.out.println("Sample categories, assets, and employees loaded.");
+        }
+    }
+}
